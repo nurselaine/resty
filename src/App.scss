@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
 $backgroundColor: #f5f545;
 $footerColor: #80af72;
 $headerColor: #7acaf9;
 $backgroundImage: url(../public/assets/poke-background.png);
-$ConcertOne: 'Concert One', sans-Serif;
+// $ConcertOne: 'Concert One', sans-Serif;
 
 html, body {
   height: 100%;
@@ -15,7 +15,7 @@ body {
   background: $backgroundImage;
   background-position-y: -300px;
   height: 100%;
-  font-family: $ConcertOne;
+  // font-family: $ConcertOne;
 
   #root {
     display: flex;
