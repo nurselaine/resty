@@ -1,4 +1,9 @@
-$backgroundColor: #f5f5f5;
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+$backgroundColor: #f5f545;
+$footerColor: #80af72;
+$headerColor: #7acaf9;
+$backgroundImage: url(../public/assets/poke-background.png);
+$ConcertOne: 'Concert One', sans-Serif;
 
 html, body {
   height: 100%;
@@ -7,8 +12,10 @@ html, body {
 }
 
 body {
-  background: $backgroundColor;
+  background: $backgroundImage;
+  background-position-y: -300px;
   height: 100%;
+  font-family: $ConcertOne;
 
   #root {
     display: flex;
@@ -16,19 +23,31 @@ body {
     height: 100%;
   }
 
+  .request {
+    margin: auto;
+    margin-bottom: 0;
+  }
+
   footer {
-    background: darken($backgroundColor, 50);
-    border-top: 1px solid #eee;
+    background: $footerColor;
+    border-top: 1px solid darken($footerColor, 5);
     padding: 1em 3em;
     margin: 0;
+
+    &:hover{
+      background: darken($footerColor, 5);
+    }
   }
 
   header {
-    background: darken($backgroundColor, 75);
-    border-bottom: 1px solid #eee;
+    background: $headerColor;
+    border-bottom: 1px solid darken($headerColor, 5);
     color: #eee;
     padding: 0;
     margin: 0;
     text-align: center;
+    &:hover{
+      background: darken($headerColor, 5);
+    }
   }
 }
