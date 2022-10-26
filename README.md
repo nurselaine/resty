@@ -12,6 +12,6 @@
 
 # Phase 1
   Basic React Application
-  Scaffolding
+  Scaffolding 
   Basic State
   Rendering 
