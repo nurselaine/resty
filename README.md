@@ -6,9 +6,13 @@
 
 [Deployed Site](https://nurselaine-resty.netlify.app/)
 
+## To run Resty
+  - npm i axios react-spinners and sass
+
 # UML
 
 ![Lab 20](./public/assets/lab20uml.png)
+![lab 21](./public/assets/lab21UML.png) 
 
 # Phase 1
   Basic React Application
