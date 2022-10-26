@@ -24,15 +24,16 @@ export default function App() {
     console.log('call api function', requestParams);
     setloading(true);
     const request = requestMethods[requestParams.method];
-    request();
+    request(requestParams);
     setRequestParams(requestParams);
     setloading(false);
   };
 
-  const getMethod = async () => {
+  const getMethod = async (params) => {
     try {
       let newCount = 1 + count;
-      const data = await axios.get(requestParams.url);
+      console.log(params);
+      const data = await axios.get(params.url);
       setData(data);
       setCount(newCount);
       setPayload({
@@ -71,7 +72,7 @@ export default function App() {
       <React.Fragment> 
         <Header />
         <section className='request'>
-          <div>Request Method: {JSON.stringify(requestParams.method).toUpperCase()}</div>
+          <div>Request Method: {JSON.stringify(requestParams.method)}</div>
           <div>URL: {requestParams.url}</div>
         </section>
         <Form handleApiCall={callApi} />
