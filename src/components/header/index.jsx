@@ -3,7 +3,7 @@ import React from 'react';
 export default function Header(){
   return (
     <header>
-      <h1>RESTy</h1>
+      <h1 className='header-title'>RESTy</h1>
     </header>
   );
 };
