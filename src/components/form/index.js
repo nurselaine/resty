@@ -37,7 +37,7 @@ export default function Form(props){
             <input name='url' type='text' />
             <button type="submit">GO!</button>
           </label>
-          {
+          { 
             method === 'put' || method === 'post' ? 
             <TextBox getText={getText}/>
             : ''

@@ -68,7 +68,7 @@ export default function App() {
   // requestMethods.put = putMethod;
 
     return (
-      <React.Fragment>
+      <React.Fragment> 
         <Header />
         <section className='request'>
           <div>Request Method: {JSON.stringify(requestParams.method).toUpperCase()}</div>

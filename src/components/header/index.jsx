@@ -5,5 +5,5 @@ export default function Header(){
     <header>
       <h1 className='header-title'>RESTy</h1>
     </header>
-  );
+  ); 
 };

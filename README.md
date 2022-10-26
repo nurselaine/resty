@@ -12,7 +12,7 @@
 # UML
 
 ![Lab 20](./public/assets/lab20uml.png)
-![lab 21](./public/assets/lab21UML.png)
+![lab 21](./public/assets/lab21UML.png) 
 
 # Phase 1
   Basic React Application

@@ -8,4 +8,4 @@ export default function TextBox({getText}) {
   return (
       <textarea onChange={text} name='Textbox' rows='10' placeholder="Enter pokemon here..."></textarea>
   )
-}
+} 
