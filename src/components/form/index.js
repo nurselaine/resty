@@ -31,7 +31,7 @@ export default function Form(props){
 
     return (
       <>
-        <form onSubmit={handleSubmit}>
+        <form data-testId='form' onSubmit={handleSubmit}>
           <label >
             <span>URL: </span>
             <input name='url' type='text' />
@@ -43,10 +43,10 @@ export default function Form(props){
             : ''
           }
           <label onClick={handleMethod} className="methods">
-            <span id="get" onClick={() => setActive(true)} className={active && method.toLowerCase() === 'get' ? 'active' : ''}>GET</span>
-            <span id="post" onClick={() => setActive(true)} className={active&& method.toLowerCase() === 'post'  ? 'active' : ''}>POST</span>
-            <span id="put" onClick={() => setActive(true)} className={active && method.toLowerCase() === 'put'  ? 'active' : ''}>PUT</span>
-            <span id="delete" onClick={() => setActive(true)} className={active && method.toLowerCase() === 'delete'  ? 'active' : ''}>DELETE</span>
+            <span id="get" onClick={() => setActive(true)} className={active && method === 'GET' ? 'active' : ''}>GET</span>
+            <span id="post" onClick={() => setActive(true)} className={active&& method === 'POST'  ? 'active' : ''}>POST</span>
+            <span id="put" onClick={() => setActive(true)} className={active && method === 'PUT'  ? 'active' : ''}>PUT</span>
+            <span id="delete" onClick={() => setActive(true)} className={active && method === 'DELETE'  ? 'active' : ''}>DELETE</span>
           </label>
         </form>
       </>

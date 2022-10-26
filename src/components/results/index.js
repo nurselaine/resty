@@ -4,7 +4,7 @@ import './results.scss';
 export default function Results(props) {
 
   return (
-    <section id='results'>
+    <section data-testid='results-testId' id='results'>
       <pre>{`Headers: ${JSON.stringify(props.data.headers, undefined, 2)}`}</pre>
       <pre>{`Count: ${JSON.stringify(props.data.count, undefined, 2)}`}</pre>
       <pre>{`Data: ${JSON.stringify(props.data, undefined, 2)}`}</pre>
