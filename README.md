@@ -7,7 +7,7 @@
 [Deployed Site](https://nurselaine-resty.netlify.app/)
 
 ## To run Resty
-  - npm i axios react-spinners and sass
+  - npm i axios react-spinners react-json-pretty and sass
 
 # UML
 
@@ -19,3 +19,17 @@
   Scaffolding 
   Basic State
   Rendering 
+
+# Phase 2
+  Implement useState hook
+  Pass data from Form component to Results 
+  Add styling for form and loading feedback
+
+# Phase 3
+  User enters an API URL
+  Chooses a REST Method
+  Clicks the “Go” button
+  Application fetches data from the URL given, with the method specified
+  Displays the response headers and results separately
+  Both headers and results should be “pretty printed” JSON
+  Use a third party component to pretty print JSON

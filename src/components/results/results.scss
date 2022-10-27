@@ -1,5 +1,4 @@
 #results{
-  border: 1px red solid;
   height: 25rem;
   overflow: scroll;
   background-color: white;
@@ -8,6 +7,21 @@
   width: 30%
   pre{
     width: 100%;
-    border-radius: 15px;
+    border-radius: 15px
+  }
+  .pre-headers{
+    color: green;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .pre-count{
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .pre-data{
+    color: darkblue;
+    font-size: 15px;
+    font-weight: bold;
   }
 }

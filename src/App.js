@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.scss';
 import { CircleLoader } from 'react-spinners';
@@ -17,29 +17,44 @@ export default function App() {
   const [payload, setPayload] = useState({});
   const [loading, setloading] = useState(false);
   const [count, setCount] = useState(0);
+  // const [history, setHistory] = useState([]);
 
   const requestMethods = {};
+  // const [preventDoubleRequest, setpreventDoubleRequest] = useRef(false);
 
-  const callApi = (requestParams) => {
-    console.log('call api function', requestParams);
-    setloading(true);
-    const request = requestMethods[requestParams.method];
-    request(requestParams);
+  // const updateHistory = (url) => {
+  //   // let stack = history.push(url);
+  //   setHistory(url);
+  // }
+
+  useEffect(() => {
+    if (requestParams.method) {
+      const callApi = () => {
+        const request = requestMethods[requestParams.method];
+        request(requestParams);
+        setloading(false);
+      };
+      callApi();
+    }
+  }, [requestParams]);
+
+  const updateData = (requestParams) => {
+    console.log(requestParams);
     setRequestParams(requestParams);
-    setloading(false);
-  };
+  }
 
   const getMethod = async (params) => {
     try {
+      setloading(true);
       let newCount = 1 + count;
-      console.log(params);
       const data = await axios.get(params.url);
-      setData(data);
-      setCount(newCount);
+      console.log('new data', data);
+      setData(() => data.data);
+      setCount(() => newCount);
       setPayload({
-        results: data,
-        count: newCount,
         headers: data.headers,
+        count: newCount,
+        results: data.data,
       });
     } catch (e) {
       console.log('ERROR: ', e);
@@ -47,47 +62,61 @@ export default function App() {
   };
   requestMethods.get = getMethod;
 
-  // const postMethod = async (payload) => {
-  //   try {
-  //     const data = await axios.post(payload.endpoint, payload);
-  //     console.log(data);
-  //     setloading(false);
-  //   } catch (e) {
-  //     console.log('ERROR: ', e);
-  //   }
-  // };
-  // requestMethods.post = postMethod;
+  const postMethod = async (payload) => {
+    try {
+      const data = await axios.post(payload.endpoint, payload);
+      console.log(data);
+      setloading(false);
+    } catch (e) {
+      console.log('ERROR: ', e);
+    }
+  };
+  requestMethods.post = postMethod;
 
-  // const putMethod = async (payload) => {
-  //   try {
-  //     const data = await axios.put(payload.endpoint, payload);
-  //     console.log(data);
-  //   } catch (e) {
-  //     console.log('ERROR: ', e);
-  //   }
-  // };
-  // requestMethods.put = putMethod;
+  const putMethod = async (payload) => {
+    try {
+      const data = await axios.put(`${payload.url}${payload.id}`, payload.body);
+      console.log(data);
+    } catch (e) {
+      console.log('ERROR: ', e);
+    }
+  };
+  requestMethods.put = putMethod;
 
-    return (
-      <React.Fragment> 
+  const deleteMethod = async (payload) => {
+    try {
+      await axios.delete(`${payload.url}/${payload.id}`);
+      console.log('Successfully Deleted!');
+    } catch (e) {
+      console.log(`Error occured while deleting ${e}`);
+    }
+  };
+  requestMethods.delete = deleteMethod;
+
+  console.log(requestParams);
+  return (
+    <div id='App'>
+      <main>
         <Header />
         <section className='request'>
           <div>Request Method: {JSON.stringify(requestParams.method)}</div>
           <div>URL: {requestParams.url}</div>
         </section>
-        <Form handleApiCall={callApi} />
+        <Form handleApiCall={updateData} />
         {
-          loading && data ?
-          <CircleLoader
-          loading={loading}
-          color={'#f5f545'}
-          size={150}
-          aria-label='Loading spinner'
-          className='loading-spinner'
-        /> 
-        : <Results data={payload} loading={loading}/>
+          // data && <Results data={payload} loading={loading} />
+            loading && data ?
+            <CircleLoader
+            loading={loading}
+            color={'#f5f545'}
+            size={150}
+            aria-label='Loading spinner'
+            className='loading-spinner'
+          /> 
+          : <Results data={payload} loading={loading}/>
         }
-        <Footer />
-      </React.Fragment>
-    );
+      </main>
+      <Footer />
+    </div>
+  );
 }

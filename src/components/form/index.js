@@ -2,40 +2,52 @@ import React, { useState } from 'react';
 import TextBox from './Textbox';
 
 import './form.scss';
-import { act } from 'react-dom/test-utils';
 
 export default function Form(props){
 
   const [method, setMethod] = useState('get');
   const [newObj, setNewObj] = useState({});
   const [active, setActive] = useState(false);
+  const [url, setUrl] = useState('');
+  const [id, setId] = useState(0);
 
   const handleSubmit = e => {
     e.preventDefault();
     const formData = {
       method: method,
-      url: 'https://pokeapi.co/api/v2/pokemon',
+      url: url,
+      body: newObj,
+      id: id,
     };
     props.handleApiCall(formData);
     e.target.reset();
     setActive(false);
   };
 
-  // const handleMethod = (e) => {
-  //   setMethod(e.target.id);
-  //   console.log(method);
-  // };
+  const getUrl = (e) => {
+    setUrl(e.target.value);
+    // props.history(e.target.value);
+  }
 
   const getText = (newTextObj) => {
     setNewObj(newTextObj);
   }
 
+  const getId = (e) => {
+    setId(e.target.value);
+  }
+
     return (
       <>
-        <form data-testId='form' onSubmit={handleSubmit}>
+        <form data-testid='form' onSubmit={handleSubmit}>
           <label >
             <span>URL: </span>
-            <input name='url' type='text' />
+            <input onChange={getUrl} name='url' type='text' />
+            {
+              method === 'put' || method === 'delete' ?
+              <input onChange={getId} name='id' type='number'/>
+              : ''
+            }
             <button type="submit">GO!</button>
           </label>
           { 
