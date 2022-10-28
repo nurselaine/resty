@@ -4,13 +4,6 @@ import './results.scss';
 
 export default function Results(props) {
   let JSONPrettyAcai = require('react-json-pretty/themes/1337.css');
-  const render = props.list;
-  // console.log(render);
-
-  const options = {
-    linksUrls: true,
-    indent: 4,
-  }
 
   return (
     <>

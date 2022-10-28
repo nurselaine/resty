@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import App from './App';
+import { App } from './App';
 import mockAxios from '../__mocks__/axios';
 import { rest } from 'msw';
 
@@ -23,9 +23,5 @@ describe('App Component', () => {
 
     expect(handleApiCall).toHaveBeenCalled();
   });
-
-  test('Can get data from API', () => {
-    
-  })
 
 });
